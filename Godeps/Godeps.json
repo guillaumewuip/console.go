@@ -1,0 +1,11 @@
+{
+	"ImportPath": "amqpLogger",
+	"GoVersion": "go1.4",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.6.4-16-g38a6ff9",
+			"Rev": "38a6ff9215d472ce953bb9aa37b5327715c0f940"
+		}
+	]
+}
