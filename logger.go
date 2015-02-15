@@ -17,13 +17,17 @@ type options struct {
 	DefaultTags       []string
 }
 
+//Show/hide options.
+//Default false.
 type show struct {
 	Tags     bool
 	Location bool
 	Time     bool
 }
 
-//A log location
+//A log location.
+//
+//Stores filename and line of the log call
 type Location struct {
 	Filename string
 	Line     int
@@ -109,6 +113,7 @@ func (logger *Logger) printLog(color string, msg string, args ...interface{}) {
 }
 
 //Add tags to the log
+//	console.Tag("Tag1", "Tag2").Log("Something") //[Tag1][Tag2]	Something
 func (logger *Logger) Tag(args ...string) *Logger {
 
 	logger.show.Tags = true
@@ -118,6 +123,7 @@ func (logger *Logger) Tag(args ...string) *Logger {
 }
 
 //Add file and line information to the log
+//	console.File().Log("Something") //[main.go:22]	Something
 func (logger *Logger) File() *Logger {
 
 	logger.show.Location = true
@@ -126,6 +132,7 @@ func (logger *Logger) File() *Logger {
 }
 
 //Add time information to the log
+//	console.Time().Log("Something") //2015-02-15T10:31:46+01:00	Something
 func (logger *Logger) Time() *Logger {
 	logger.show.Time = true
 

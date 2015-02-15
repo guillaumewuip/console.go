@@ -1,11 +1,7 @@
 package console
 
-import (
-//"fmt"
-)
-
-//A Hook implements function fired each time a log is printed
-//it receives a Logger
+//A Hook implements a function fired each time a log is printed.
+//It receives a Logger.
 type HookFunc func(Logger) error
 
 //Internal type to store hooks in a Logger
