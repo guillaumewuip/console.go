@@ -14,7 +14,7 @@ func ExampleNewConsole_withCustomColors() {
 	myConsole := console.NewConsole(colors)
 }
 
-//Here's an example showing how to received all log.
+//Here's an example showing how to received all logs.
 func ExampleHookFunc() {
 
 	testHook := func(logger console.Logger) error {
@@ -33,7 +33,7 @@ func ExampleHookFunc() {
 
 }
 
-//Here's an example showing how to received all log.
+//Here's an example showing how to received all logs.
 func ExampleAddHook() {
 
 	testHook := func(logger console.Logger) error {
