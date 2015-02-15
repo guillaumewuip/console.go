@@ -3,6 +3,8 @@
 Console is a lightweight logging tool inspired by the NodeJS console object
 and [Scribe.js](http://github.com/bluejamesbond/scribe.js) project.
 
+*As a js dev, I was lost in the Go world without my `console.log`.*
+
 ```go
 console.Info("Some info")
 console.Tag("Hello").Time().File().Log("Hello World")
