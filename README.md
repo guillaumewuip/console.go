@@ -8,7 +8,7 @@ console.Info("Some info")
 console.Tag("Hello").Time().File().Log("Hello World")
 ```
 
-With use of [ansi](https://github.com/mgutz/ansi) colors, it output something like below in terminal :
+With use of [ansi](https://github.com/mgutz/ansi) colors, it output something like this in terminal :
 
 ```text
 [Hello] [main.go:48] 2015-02-15T09:22:06+01:00 Hello World
