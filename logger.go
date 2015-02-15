@@ -85,7 +85,7 @@ func (logger *Logger) buildContext() {
 
 //Print the log in console
 //And fire hooks
-func (logger *Logger) PrintLog(color string, msg string, args ...interface{}) {
+func (logger *Logger) printLog(color string, msg string, args ...interface{}) {
 
 	if len(args) > 0 {
 		logger.Message = fmt.Sprintf(msg, args...)
@@ -139,7 +139,7 @@ func (logger *Logger) Time() *Logger {
 func (logger *Logger) Log(msg string, args ...interface{}) {
 	logger.Level = "log"
 	color := logger.Options.Colors["Log"]
-	logger.PrintLog(color, msg, args...)
+	logger.printLog(color, msg, args...)
 }
 
 //Info level
@@ -147,7 +147,7 @@ func (logger *Logger) Log(msg string, args ...interface{}) {
 func (logger *Logger) Info(msg string, args ...interface{}) {
 	logger.Level = "info"
 	color := logger.Options.Colors["Info"]
-	logger.PrintLog(color, msg, args...)
+	logger.printLog(color, msg, args...)
 }
 
 //Error level
@@ -155,7 +155,7 @@ func (logger *Logger) Info(msg string, args ...interface{}) {
 func (logger *Logger) Error(msg string, args ...interface{}) {
 	logger.Level = "error"
 	color := logger.Options.Colors["Error"]
-	logger.PrintLog(color, msg, args...)
+	logger.printLog(color, msg, args...)
 }
 
 //Warn level
@@ -163,5 +163,5 @@ func (logger *Logger) Error(msg string, args ...interface{}) {
 func (logger *Logger) Warning(msg string, args ...interface{}) {
 	logger.Level = "warning"
 	color := logger.Options.Colors["Warning"]
-	logger.PrintLog(color, msg, args...)
+	logger.printLog(color, msg, args...)
 }
