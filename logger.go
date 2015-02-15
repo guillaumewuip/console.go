@@ -10,14 +10,14 @@ import (
 )
 
 //Logger options
-type Options struct {
+type options struct {
 	Colors            ColorsOptions
 	ContextMediumSize int
 	SpaceSize         int
 	DefaultTags       []string
 }
 
-type Show struct {
+type show struct {
 	Tags     bool
 	Location bool
 	Time     bool
@@ -37,17 +37,17 @@ type Logger struct {
 	Timestamp      int64
 	ContextMessage string
 	Message        string
-	Hooks          internalHooks
-	Show
+	hooks          internalHooks
 	Location
-	Options
+	show
+	options
 }
 
 //Reset the logger after print
 func (logger *Logger) reset() {
 
 	logger.Tags = []string{}
-	logger.Show = Show{}
+	logger.show = show{}
 
 }
 
@@ -66,17 +66,17 @@ func (logger *Logger) buildContext() {
 
 	//Build context message
 
-	if logger.Show.Tags {
+	if logger.show.Tags {
 		for _, tag := range logger.Tags {
 			context += "[" + tag + "]"
 		}
 	}
 
-	if logger.Show.Location {
+	if logger.show.Location {
 		context += " [" + logger.Location.Filename + ":" + strconv.Itoa(logger.Location.Line) + "] "
 	}
 
-	if logger.Show.Time {
+	if logger.show.Time {
 		context += time.Now().Format(time.RFC3339) + " "
 	}
 
@@ -97,7 +97,7 @@ func (logger *Logger) printLog(color string, msg string, args ...interface{}) {
 	logger.buildContext()
 
 	//Fire hook
-	logger.Hooks.Fire(*logger)
+	logger.hooks.Fire(*logger)
 
 	//Print message to console
 	fmt.Println(ansi.Color(
@@ -111,7 +111,7 @@ func (logger *Logger) printLog(color string, msg string, args ...interface{}) {
 //Add tags to the log
 func (logger *Logger) Tag(args ...string) *Logger {
 
-	logger.Show.Tags = true
+	logger.show.Tags = true
 	logger.Tags = append(logger.Tags, args...)
 
 	return logger
@@ -120,14 +120,14 @@ func (logger *Logger) Tag(args ...string) *Logger {
 //Add file and line information to the log
 func (logger *Logger) File() *Logger {
 
-	logger.Show.Location = true
+	logger.show.Location = true
 
 	return logger
 }
 
 //Add time information to the log
 func (logger *Logger) Time() *Logger {
-	logger.Show.Time = true
+	logger.show.Time = true
 
 	return logger
 }
@@ -138,7 +138,7 @@ func (logger *Logger) Time() *Logger {
 //	console.Log("Hello World")
 func (logger *Logger) Log(msg string, args ...interface{}) {
 	logger.Level = "log"
-	color := logger.Options.Colors["Log"]
+	color := logger.options.Colors["Log"]
 	logger.printLog(color, msg, args...)
 }
 
@@ -146,7 +146,7 @@ func (logger *Logger) Log(msg string, args ...interface{}) {
 //	console.Info("Hello World")
 func (logger *Logger) Info(msg string, args ...interface{}) {
 	logger.Level = "info"
-	color := logger.Options.Colors["Info"]
+	color := logger.options.Colors["Info"]
 	logger.printLog(color, msg, args...)
 }
 
@@ -154,7 +154,7 @@ func (logger *Logger) Info(msg string, args ...interface{}) {
 //	console.Error("Hello World")
 func (logger *Logger) Error(msg string, args ...interface{}) {
 	logger.Level = "error"
-	color := logger.Options.Colors["Error"]
+	color := logger.options.Colors["Error"]
 	logger.printLog(color, msg, args...)
 }
 
@@ -162,6 +162,6 @@ func (logger *Logger) Error(msg string, args ...interface{}) {
 //	console.Warn("Hello World")
 func (logger *Logger) Warning(msg string, args ...interface{}) {
 	logger.Level = "warning"
-	color := logger.Options.Colors["Warning"]
+	color := logger.options.Colors["Warning"]
 	logger.printLog(color, msg, args...)
 }

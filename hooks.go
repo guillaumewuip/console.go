@@ -20,5 +20,5 @@ func (hooks internalHooks) Fire(logger Logger) {
 
 //Method to add a hook to a Logger
 func (logger *Logger) AddHook(hook HookFunc) {
-	logger.Hooks = append(logger.Hooks, hook)
+	logger.hooks = append(logger.hooks, hook)
 }

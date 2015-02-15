@@ -9,7 +9,7 @@ package console
 func NewConsole(colors ColorsOptions) *Logger {
 
 	logger := Logger{}
-	logger.Options.Colors = colors
+	logger.options.Colors = colors
 
 	for key, color := range defaultColors {
 		if colors[key] == "" {
