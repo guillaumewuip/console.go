@@ -1,4 +1,4 @@
-# console.go [![godoc reference](https://godoc.org/github.com/guillaumewuip/console.go?status.png)][godoc]
+# console.go ![godoc reference](https://godoc.org/github.com/guillaumewuip/console.go?status.png)
 
 Console is a lightweight logging tool inspired by the NodeJS console object
 and [Scribe.js](http://github.com/bluejamesbond/scribe.js) project.
