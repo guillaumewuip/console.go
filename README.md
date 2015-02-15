@@ -27,4 +27,4 @@ Console provided :
 **See Godoc :** http://godoc.org/github.com/guillaumewuip/console.go
 
 **Related :**
-- [a console.go hook to send log over AMQP](https://github.com/guillaumewuip/console_scribeAmqp)
+- [a console.go hook to send log over AMQP](https://github.com/guillaumewuip/console_scribeAmqp.go)
