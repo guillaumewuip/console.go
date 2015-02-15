@@ -3,7 +3,7 @@
 // and http://github.com/bluejamesbond/scribe.js project.
 //
 //	console.Info("Some info")
-//	console.Tag("Hello").Time().File().Log("Hello World")
+//	console.Tag("Hello").Time().File().Log("Hello %s", "World")
 //
 //Console provided Info, Log, Warning and Error method and Tag, Time, File optional information
 //
